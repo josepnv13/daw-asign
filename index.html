@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F2F2F2;
+            color: #333;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #2C3E50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #3498DB;
+            border-bottom: 2px solid #3498DB;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        code {
+            background-color: #ECF0F1;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        pre {
+            background-color: #ECF0F1;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .step {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .note {
+            color: #777;
+            font-style: italic;
+        }
+
+        .warning {
+            color: #E74C3C;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #777;
+        }
+    </style>
+    <title>Manual de Configuración</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Manual de Configuración</h1>
+        <h2>1. Descargar ISO Ubuntu</h2>
+        <p>Descarga la última versión de <a href="https://ubuntu.com/download" target="_blank">Ubuntu</a> desde el sitio
+            oficial.</p>
+        <h2>2. Crear Máquina Virtual</h2>
+        <div class="step">
+        <p>Sigue las instrucciones de tu plataforma de virtualización favorita para crear una nueva máquina virtual e
+            instalar Ubuntu.</p>
+        </div>
+        <h2>3. Actualizar sistema</h2>
+        <div class="step">
+        <pre><code>sudo apt update
+ sudo apt upgrade</code></pre>
+        </div>
+        <div class="step" style="text-align: center">
+            <img src="imagenes/update.png" alt="" width="80%" height="80%">
+        </div>
+        <div class="step" style="text-align: center">
+            <img src="imagenes/upgrade.png" alt="" width="80%" height="80%">
+        </div>
+        <h2>4. Instalar Apache</h2>
+        <div class="step">
+        <pre><code>sudo apt install apache2</code></pre>
+        </div>
+        <div class="step" style="text-align: center">
+            <img src="imagenes/install.png" alt="" width="80%" height="80%">
+        </div>
+        <h2>5. Iniciar el servicio Apache</h2>
+        <div class="step">
+        <pre><code>sudo service apache2 start</code></pre>
+        </div>
+        <div class="step" style="text-align: center">
+            <img src="imagenes/start.png" alt="" width="80%" height="80%">
+        </div>
+        <h2>6. Verificar el estado del servicio Apache</h2>
+        <div class="step">
+        <pre><code>sudo service apache2 status</code></pre>
+        </div>
+        <div class="step" style="text-align: center">
+            <img src="imagenes/status.png" alt="" width="80%" height="80%">
+        </div>
+        <div class="step" style="text-align: center">
+            <img src="imagenes/statusdone.png" alt="" width="80%" height="80%">
+        </div>
+        <h2>7. Configuración básica</h2>
+        <div class="step">
+            <p>- Navega al directorio <code>/var/www/html/</code></p>
+            <pre><code>cd /var/www/html/</code></pre>
+        </div>
+        <div class="step">
+            <p>- Crea un fichero <code>index.html</code></p>
+            <pre><code>nano index.html</code></pre>
+        </div>
+        <div class="step">
+            <p>- Mueve tus archivos al directorio</p>
+            <pre><code>sudo mv ~/index.html /var/www/html/</code></pre>
+        </div>
+        <div class="step">
+            <p>- Asegúrate de que los archivos tengan los permisos correctos</p>
+            <pre><code>sudo chown -R www-data:www-data /var/www/html/</code></pre>
+        </div>
+        <div class="step">
+            <p>- Verifica que tus archivos estén en el lugar correcto</p>
+            <pre><code>ls /var/www/html/</code></pre>
+        </div>
+        <div class="step">
+            <p>- Accede a tu sitio web: ingresa la IP de tu máquina virtual en el navegador.</p>
+            <p>http://[tu_ip]/nombrearchivo.html</p>
+        </div>
+        <h2>8. Configuración de cortafuegos</h2>
+        <div class="step">
+            <p>- Si estás usando un cortafuegos, asegúrate de permitir el tráfico en el puerto 80 (HTTP).</p>
+            <pre><code>sudo ufw allow 80</code></pre>
+        </div>
+        <div class="step">
+            <p>- Si no funciona, desactiva el cortafuegos con <code>sudo ufw disable</code></p>
+        </div>
+        <div class="step">
+            <p>- Comprueba el archivo de configuración de Apache:</p>
+            <pre><code>sudo nano /etc/apache2/apache2.conf</code></pre>
+            <p>- Descomenta todas las líneas de configuración</p>
+            <p>- Guarda los cambios y reinicia el servicio</p>
+            <pre><code>sudo systemctl restart apache2</code></pre>
+        </div>
+        <h2>9. Crear página nueva</h2>
+        <div class="step">
+            <p>- Navega al directorio <code>/var/www/html/</code></p>
+            <pre><code>cd /var/www/html/</code></pre>
+        </div>
+        <div class="step">
+            <p>- Crea tu fichero</p>
+            <pre><code>nano [nombrequequieras].html</code></pre>
+        </div>
+        <div class="step">
+            <p>- Modifica tu fichero paso 1</p>
+            <pre><code> sudo nano [nombrequequieras].html</code></pre>
+        </div>
+        <div class="step">
+            <p>- Modifica tu fichero paso 2</p>
+                <pre>
+                <code>&lt;!DOCTYPE html&gt;
+                &lt;html lang="es"&gt;
+                &lt;head&gt;
+                    &lt;meta charset="UTF-8"&gt;
+                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                    &lt;title&gt;Mi Página&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                    &lt;h1&gt;Hola, MariCarmen!&lt;/h1&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;</code></pre>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Manual de Configuración -  Yuse&Charlie</p>
+    </footer>
+</body>
+
+</html>
