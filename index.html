@@ -75,6 +75,9 @@
 <body>
     <div class="container">
         <h1>Manual de Configuración</h1>
+        <div class="step" style="text-align: center">
+            <img src="imagenes/apache.png" alt="" width="95%" height="95%">
+        </div>
         <h2>1. Descargar ISO Ubuntu</h2>
         <p>Descarga la última versión de <a href="https://ubuntu.com/download" target="_blank">Ubuntu</a> desde el sitio
             oficial.</p>
@@ -101,14 +104,22 @@
         <div class="step" style="text-align: center">
             <img src="imagenes/install.png" alt="" width="80%" height="80%">
         </div>
-        <h2>5. Iniciar el servicio Apache</h2>
+        <h2>5. Comprobar archivos de apache</h2>
+        <div class="step">
+        <pre><code>cd /etc/apache2  </code></pre>
+        <pre><code>ls -la</code></pre>
+        </div>
+        <div class="step" style="text-align: center">
+            <img src="imagenes/ls.png" alt="" width="80%" height="80%">
+        </div>
+        <h2>6. Iniciar el servicio Apache</h2>
         <div class="step">
         <pre><code>sudo service apache2 start</code></pre>
         </div>
         <div class="step" style="text-align: center">
             <img src="imagenes/start.png" alt="" width="80%" height="80%">
         </div>
-        <h2>6. Verificar el estado del servicio Apache</h2>
+        <h2>7. Verificar el estado del servicio Apache</h2>
         <div class="step">
         <pre><code>sudo service apache2 status</code></pre>
         </div>
@@ -118,7 +129,7 @@
         <div class="step" style="text-align: center">
             <img src="imagenes/statusdone.png" alt="" width="80%" height="80%">
         </div>
-        <h2>7. Configuración básica</h2>
+        <h2>8. Configuración básica</h2>
         <div class="step">
             <p>- Navega al directorio <code>/var/www/html/</code></p>
             <pre><code>cd /var/www/html/</code></pre>
@@ -143,7 +154,7 @@
             <p>- Accede a tu sitio web: ingresa la IP de tu máquina virtual en el navegador.</p>
             <p>http://[tu_ip]/nombrearchivo.html</p>
         </div>
-        <h2>8. Configuración de cortafuegos</h2>
+        <h2>9. Configuración de cortafuegos</h2>
         <div class="step">
             <p>- Si estás usando un cortafuegos, asegúrate de permitir el tráfico en el puerto 80 (HTTP).</p>
             <pre><code>sudo ufw allow 80</code></pre>
@@ -158,7 +169,7 @@
             <p>- Guarda los cambios y reinicia el servicio</p>
             <pre><code>sudo systemctl restart apache2</code></pre>
         </div>
-        <h2>9. Crear página nueva</h2>
+        <h2>10. Crear página nueva</h2>
         <div class="step">
             <p>- Navega al directorio <code>/var/www/html/</code></p>
             <pre><code>cd /var/www/html/</code></pre>
